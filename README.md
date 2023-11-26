@@ -1,6 +1,7 @@
 # tutor
 
 A new Flutter project.
+<img src="https://github.com/nazimfeni/flutter_m_11_assignment/blob/master/screenshot/screen1.png" width="200" height="400" alt="Potrait image">
 
 ## Getting Started
 
