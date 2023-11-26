@@ -78,7 +78,11 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () => performCalculation('+'),
+                    onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      performCalculation('+');
+                    }
+                      },
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -87,7 +91,12 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => performCalculation('-'),
+
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        performCalculation('-');
+                      }
+                    },
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -96,25 +105,36 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => performCalculation('*'),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        performCalculation('*');
+                      }
+                    },
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          IconData(0x00D7, fontFamily: 'MaterialIcons'), // Unicode for the multiplication symbol (×)
+                          IconData(0x00D7,
+                              fontFamily:
+                                  'MaterialIcons'), // Unicode for the multiplication symbol (×)
                         )
                       ],
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => performCalculation('/'),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        performCalculation('/');
+                      }
+                    },
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          IconData(0x00F7, fontFamily: 'MaterialIcons'), // Unicode for the division symbol (÷)
+                          IconData(0x00F7,
+                              fontFamily:
+                                  'MaterialIcons'), // Unicode for the division symbol (÷)
                         )
-
                       ],
                     ),
                   ),
@@ -134,8 +154,6 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
     outputTEController.dispose();
     super.dispose();
   }
-
-
 
   void performCalculation(String operator) {
     double num1 = double.tryParse(number1TEController.text) ?? 0.0;
@@ -161,13 +179,12 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
           // For example: result = double.infinity; or throw an exception
         }
         break;
-    // You can add more cases for other operations as needed
+      // You can add more cases for other operations as needed
       default:
-      // Handle unsupported operations
+        // Handle unsupported operations
         break;
     }
 
     outputTEController.text = result.toStringAsFixed(2);
   }
-
 }
